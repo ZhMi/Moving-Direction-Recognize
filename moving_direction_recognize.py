@@ -5,7 +5,6 @@ __author__ = 'zhmi'
 import cv
 
 import constants
-import math
 
 def binarization(image):
 
@@ -16,7 +15,6 @@ def binarization(image):
     threshold_picture = cv.CloneImage(grey)
     cv.Threshold(threshold_picture, threshold_picture, 100, 255, cv.CV_THRESH_BINARY)
     cv.ShowImage("Threshold_pic", threshold_picture)
-
     return threshold_picture
 
 def background_remove(image, background):
@@ -55,7 +53,7 @@ def extract_pixel(image):
     y = 0
     for i in range(image.height):
         for j in range(image.width):
-            if(image[i,j] == 255.0):
+            if(image[i,j] == 0):
                 x = x + i
                 y = y + j
 
@@ -87,7 +85,8 @@ cv.WaitKey(0)
 threshold_background = binarization(background)
 cv.WaitKey(0)
 
-image_one = cv.LoadImage('%s/1.jpg'%(picture_path))
+# picture one
+image_one = cv.LoadImage('%s/2.jpg'%(picture_path))
 cv.ShowImage('image_one', image_one)
 cv.WaitKey(0)
 
@@ -100,9 +99,10 @@ cv.WaitKey(0)
 background_removed_pic_one = edge_detection(background_removed_pic_one)
 
 x1, y1 = extract_pixel(background_removed_pic_one)
+
 # picture 2
-'''
-image_two = cv.LoadImage('%s/2.jpg'%(picture_path))
+
+image_two = cv.LoadImage('%s/1.jpg'%(picture_path))
 cv.ShowImage('image_two', image_two)
 cv.WaitKey(0)
 
@@ -117,4 +117,3 @@ background_removed_pic_two = edge_detection(background_removed_pic_two)
 x2, y2 = extract_pixel(background_removed_pic_two)
 
 direction_recognize(x1, y1, x2, y2)
-'''
