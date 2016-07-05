@@ -75,7 +75,6 @@ def direction_recognize(x1, y1, x2, y2):
     else:
         print "down"
 
-
 # test part
 picture_path = constants.picture_path
 background = cv.LoadImage('%s/background.jpg'%(picture_path))
