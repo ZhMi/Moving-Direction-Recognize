@@ -1,3 +1,4 @@
+# !/usr/bin/python
 # -*- coding: utf-8 -*-
 
 __author__ = 'zhmi'
@@ -8,7 +9,7 @@ import constants
 
 def binarization(image):
 
-    grey = cv.CreateImage((image.width ,image.height),8,1) #8depth, 1 channel so grayscale
+    grey = cv.CreateImage((image.width, image.height),8,1) #8 depth, 1 channel so grayscale
     cv.CvtColor(image, grey, cv.CV_RGBA2GRAY) #Convert to gray so act as a filter
     cv.ShowImage('Greyed_pic', grey)
 
@@ -20,7 +21,7 @@ def binarization(image):
 def background_remove(image, background):
 
     res = cv.CloneImage(image)
-    cv.AbsDiff(image, background, res) # Like minus for each pixel im(i) - im2(i)
+    cv.AbsDiff(image, background, res)# Like minus for each pixel im(i) - im2(i)
     cv.ShowImage("AbsDiff", res)
     return res
 
